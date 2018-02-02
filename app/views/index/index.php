@@ -3,6 +3,7 @@
     <head>
         <title>YYF-YUNYIN YAF FRAMEWORK</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="<?php echo csrf_token(); ?>">
         <style type="text/css">
         body,button,a{text-align: center;color: rgb(255,255,255);background: rgb(26,188,156);}
         .form {
@@ -53,6 +54,26 @@
             <li><a href="https://github.com/YunYinORG/YYFJS">YYFJS前端JavaScript库</a></li>
             <li><a href="http://debugger.newfuture.cc/">YYF-Debugger调试插件</a></li>
         </ul>
+        <script src="/js/jquery-1.10.2.min.js"></script>
     </footer>
+        <script>
+            $.ajax({
+                type: 'post',
+                url: 'http://127.0.0.1:8026/Index/Index/test',
+                data: {},
+                dataType: 'json',
+                crossDomain: true,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (data) {
+                      console.log(data);
+                },
+                error: function (xhr, type) {
+
+                    console.warn(xhr);
+                }
+            });
+        </script>
 </body>
 </html>

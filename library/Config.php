@@ -21,6 +21,8 @@ class Config
 {
     private static $_config = null;
     private static $_secret = null;
+    private static $_lang_en=null;
+    private static $_lang_zh=null;
 
     /**
      * 获取配置
@@ -57,5 +59,37 @@ class Config
             $secret = new Ini(Config::get('secret_path'));
         }
         return $key ? $secret->get($name)->get($key) : $secret->get($name);
+    }
+
+    /**
+     * @param $name
+     * @param null $key
+     * @return mixed
+     * @throws Exception
+     */
+    public static function getLangEn($name,$key=null){
+        if (!$lang_en = &Config::$_lang_en) {
+            if(!file_exists(APP_PATH."/app/lang/en/$name.php")){
+                throw new Exception("Not Found File: ".APP_PATH."/app/lang/en/$name.php");
+            }
+            $lang_en[$name]=require_once APP_PATH."/app/lang/en/$name.php";
+        }
+        return $key ? $lang_en[$name][$key] : $lang_en[$name];
+    }
+
+    /**
+     * @param $name
+     * @param null $key
+     * @return mixed
+     * @throws Exception
+     */
+    public static function getLangZh($name,$key=null){
+        if (!$lang_zh = &Config::$_lang_zh) {
+            if(!file_exists(APP_PATH."/app/lang/zh/$name.php")){
+                throw new Exception("Not Found File: ".APP_PATH."/app/lang/zh/$name.php");
+            }
+            $lang_zh[$name]=require_once APP_PATH."/app/lang/zh/$name.php";
+        }
+        return $key ? $lang_zh[$name][$key] : $lang_zh[$name];
     }
 }

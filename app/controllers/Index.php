@@ -13,17 +13,25 @@
  */
 class IndexController extends Rest
 {
+
     /**
      * Demo 首页
      * 使用phtml 模板渲染
      */
-    public function indexAction()
+   public function indexAction()
     {
-        Yaf_Dispatcher::getInstance()->enableView();
+        Yaf_Dispatcher::getInstance()->disableView();
         $url = $this->_request->getBaseUri();
         $this->getView()
             ->assign('version', Config::get('version'))
             ->assign('url', $url);
+        $this->display('index');
+    }
+
+    public function demoAction()
+    {
+        //response 即为返回内容
+       // var_dump(Session::start());
     }
 
     /**
@@ -51,13 +59,14 @@ class IndexController extends Rest
      */
     public function POST_testAction()
     {
-        if (Input::post('data', $data)) {
+        $this->response(1, "test");
+        /*if (Input::post('data', $data)) {
             // response() 指定状态为1 等同于success
             $this->response(1, $data);
         } else {
             //错误码为0，并指定http 状态码为400
             $this->response(0, 'please POST data with field name "data"', 400);
-        }
+        }*/
     }
 
     /**

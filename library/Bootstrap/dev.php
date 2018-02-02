@@ -27,9 +27,11 @@ class Bootstrap extends Bootstrap_Abstract
      */
     public function _initRoute(Yaf_Dispatcher $dispatcher)
     {
-        if ($routes = Config::get('routes')) {
+        $config=new Yaf_Config_ini(APP_PATH . '/conf/router.ini', 'routes');
+        if ($routes = $config->routes) {
             $dispatcher->getRouter()->addConfig($routes);
         }
+
     }
 
     /**
@@ -100,5 +102,34 @@ class Bootstrap extends Bootstrap_Abstract
         if ($tacerdebug = Config::get('debug.tracer')) {
             $dispatcher->registerPlugin(Tracer::Instance($tacerdebug));
         }
+    }
+
+
+    /**
+     * 加载插件
+     */
+    public function _initSessionPlugin(Yaf_Dispatcher $dispatcher)
+    {
+        $session = new StartSessionPlugin();
+        $dispatcher->registerPlugin($session);
+    }
+
+    public function _initAuthPlugin(Yaf_Dispatcher $dispatcher)
+    {
+        $Authenticate = new AuthenticatePlugin();
+        $dispatcher->registerPlugin($Authenticate);
+    }
+
+    public function _initCsrfTokenPlugin(Yaf_Dispatcher $dispatcher)
+    {
+        $CsrfToken = new CsrfTokenPlugin();
+        $dispatcher->registerPlugin($CsrfToken);
+    }
+
+    /**
+     * 加载公共方法
+     */
+    public function _initHelper(){
+        require_once APP_PATH."/library/Functions/helper.php";
     }
 }

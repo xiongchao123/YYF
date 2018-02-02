@@ -1,4 +1,5 @@
 <?php
+
 /**
  * YYF - A simple, secure, and efficient PHP RESTful Framework.
  *
@@ -7,6 +8,8 @@
  * @license Apache2.0
  * @copyright 2015-2017 NewFuture@yunyin.org
  */
+
+namespace Interfaces;
 
 /**
  * PHP53兼容

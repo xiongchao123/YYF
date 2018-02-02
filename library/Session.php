@@ -17,19 +17,21 @@ class Session
 {
     private static $_id;
 
+
     /**
      * @param string $id session_id
+     * @param array $options
      *
      * @return string [session id]
      */
-    public static function start($id = null)
+    public static function start($id = null, array $options = [])
     {
         if (!$sid = self::$_id) {
             if (($sid = $id) || Input::I('SERVER.HTTP_SESSION_ID', $sid, 'ctype_alnum')) {
                 session_id($sid);
-                session_start();
+                session_start($options);
             } else {
-                session_start();
+                session_start($options);
                 $sid = session_id();
             }
             self::$_id = $sid;
@@ -38,10 +40,42 @@ class Session
     }
 
     /**
+     * @return string token
+     */
+    public static function token()
+    {
+        return Aes::encrypt(self::start(), Config::getSecret("encrypt.key_token"), true);
+    }
+
+    /**
+     * @param $token
+     * @return string
+     */
+    public static function decryptToken($token)
+    {
+        return Aes::decrypt($token, Config::getSecret("encrypt.key_token"), true);
+    }
+
+    /**
+     * @param $token
+     * @return bool
+     */
+    public static function verifyToken($token)
+    {
+        return self::start() === self::decryptToken($token);
+        /* $decryptToken=self::decryptToken($token);
+         if(self::start() === $decryptToken)
+             return true;
+         if(self::start() === json_decode($decryptToken,true))
+             return true;
+         return false;*/
+    }
+
+    /**
      * 设置session
      *
-     * @param string $name  键值
-     * @param mixed  $value 对应值
+     * @param string $name 键值
+     * @param mixed $value 对应值
      */
     public static function set($name, $value)
     {

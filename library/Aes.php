@@ -46,26 +46,26 @@ class Aes
      * AES加密函数,$data引用传真，直接变成密码
      * 改用openssl加密
      *
-     * @param string $data         原文
-     * @param string $key          密钥
-     * @param bool   $safe64=false 是否进行安全Base64编码
+     * @param string $data 原文
+     * @param string $key 密钥
+     * @param bool $safe64 =false 是否进行安全Base64编码
      *
      * @return string [加密后的密文 或者 base64编码后密文]
      */
     public static function encrypt($data, $key, $safe64 = false)
     {
         // openssl_cipher_iv_length(self::MOD);
-        $iv   = openssl_random_pseudo_bytes(16);
-        $data = $iv.openssl_encrypt($data, Aes::MOD, $key, true, $iv);
+        $iv = openssl_random_pseudo_bytes(16);
+        $data = $iv . openssl_encrypt($data, Aes::MOD, $key, true, $iv);
         return $safe64 ? Aes::base64Encode($data) : $data;
     }
 
     /**
      * aes解密函数
      *
-     * @param string $cipher       密文
-     * @param string $key          密钥
-     * @param bool   $safe64=false 是否是安全Base64编码的密文
+     * @param string $cipher 密文
+     * @param string $key 密钥
+     * @param bool $safe64 =false 是否是安全Base64编码的密文
      *
      * @return string 解密后的明文
      */
@@ -73,8 +73,7 @@ class Aes
     {
         if ($cipher) {
             $safe64 and $cipher = Aes::base64Decode($cipher);
-
-            $iv     = substr($cipher, 0, 16);
+            $iv = substr($cipher, 0, 16);
             $cipher = substr($cipher, 16);
             return openssl_decrypt($cipher, Aes::MOD, $key, true, $iv);
         }

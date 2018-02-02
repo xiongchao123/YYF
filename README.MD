@@ -1,7 +1,7 @@
-YYF (Yunyin Yaf Framework)
+Yaf_web (Yaf for web)
 ============================
 
-基于PHP yaf扩展,构建的安全高性能RESTful后端框架。
+基于PHP yaf扩展和参考YYF框架,构建的安全高性能RESTful后端框架。
 
 YYF致力于提高生产环境下的运行性能和开发环境下的开发效率。
 [核心库](library/)高效封装常用库和操作,兼容php5.3及以上,并对php7做最大优化。
