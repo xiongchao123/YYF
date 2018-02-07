@@ -22,7 +22,7 @@ YYF致力于提高生产环境下的运行性能和开发环境下的开发效�
 
 快速安装:
 
-1. 下载解压，或者clone仓库 `git clone https://github.com/YunYinORG/YYF.git` ;
+1. 下载解压，或者clone仓库 `git clone https://github.com/xiongchao123/yaf_web.git` ;
 2. 运行 `./init.cmd` (windows下双击即可) ;
 3. 使用YYF虚拟机开发环境或者配置服务器环境 ;
 
@@ -30,93 +30,144 @@ YYF致力于提高生产环境下的运行性能和开发环境下的开发效�
 ## 目录结构
 >
 ```
-│  .htaccess    Apache开发环境和SAE重定向url
-│  .travis.yml  travis-ci测试配置
-│  init.cmd     开发环境初始化通用脚本 
-│  LICENSE      Apache 2.0 许可证
-│  README.MD
-│
-├─app      应用目录【添加代码目录】
-│  │
-│  │  README.MD
-│  │  
-│  ├─controllers     控制器目录【添加代码的主战场】
-│  │      Error.php  默认错误
-│  │      Index.php  DEMO控制器
-│  │      
-│  ├─email           邮件模板目录
-│  │      verify.tpl 默认验证邮件模板示例
-│  │      
-│  ├─models          数据模型目录
-│  │      README.md
-│  │      
-│  └─views           视图目录
-│      └─index
-│              index.phtml
-│
-├─conf      配置目录
-│      app.ini            基础配置
-│      secret.common.ini  示例私密配置
-│      secret.product.ini 生产环境私密配置
-│
-├─library   核心库目录
-│  │  Cache.php    缓存管理类
-│  │  Config.php   配置读取类
-│  │  Cookie.php   安全Cookie接口
-│  │  Db.php       数据库操作封装
-│  │  Debug.php    调试类
-│  │  Encrypt.php  加密库
-│  │  Input.php    输入过滤接口
-│  │  Kv.php       key-value存取类
-│  │  Logger.php   日志管理类
-│  │  Mail.php     邮件发送
-│  │  Model.php    基础model
-│  │  Orm.php      ORM数据库对象映射
-│  │  Random.php   随机字符生成类
-│  │  README.md
-│  │  Rest.php     基础REST类
-│  │  Rsa.php      RSA加密类
-│  │  Safe.php     安全统计类
-│  │  Session.php  session管理接口
-│  │  Validate.php 类型验证类
-│  │  Wechat.php   微信登录接口库类
-│  │
-│  ├─Bootstrap 启动加载
-│  │      dev.php       开发环境启动加载
-│  │      product.php   生产环境启动加载
-│  │
-│  ├─Debug 调试相关库(开发环境)
-│  │      Assertion.php 断言处理类
-│  │      Header.php    header头输出类
-│  │      Listener.php  日志监听类
-│  │      Tracer.php    消耗统计类
-│  │
-│  ├─Service 系统基础服务
-│  │      Api.php
-│  │      Database.php
-│  │      Message.php
-│  │      Qiniu.php
-│  │      README.MD
-│  │      Smtp.php
-│  │      Ucpaas.php
-│  │
-│  ├─Storage 存储驱动
-│  │      File.php      文件缓存类
-│  │      
-│  └─Test 单元测试库
-│         YafTest.php   Yaf框架测试基类
-│
-├─public 公共目录【前端资源目录，生产环境根目录】
-│      .htaccess    url重写
-│      favicon.ico
-│      index.php    入口文件
-│      robots.txt
-│
-├─runtime 默认缓存日志临时文件夹【保证程序具有可读写权限】
-│
-└─tests   单元测试目录
+├── app                   		应用目录【添加代码目录】         
+│   ├── Console			  		控制台操作实现						
+│   ├── controllers      		控制器目录【添加代码的主战场】
+│   ├── email             		邮件模板目录
+│   ├── lang              		语言包
+│   ├── models           		数据模型目录
+│   ├── modules           		新建模块目录
+│   ├── plugins           		插件
+│   └── views             		视图
+├── composer.json         
+├── composer.lock
+├── conf                  		配置目录
+│   ├── app.ini                 全局配置
+│   ├── AuthFilter.php          用户认证过滤
+│   ├── CsrfFilter.php          CSRF过滤
+│   ├── router.ini              路由配置
+│   ├── secret.common.ini       dev模式下配置
+│   └── secret.product.ini      product模式下配置
+│   └── queue.php               队列配置
+├── init.cmd                     开发环境初始化通用脚本
+├── library                      核心库目录 
+│   ├── Aes.php
+│   ├── Auth.php
+│   ├── Bootstrap
+│   ├── Cache.php
+│   ├── Cipher.php
+│   ├── Config.php
+│   ├── Cookie.php
+│   ├── Db.php
+│   ├── Debug
+│   ├── Debug.php
+│   ├── Exception
+│   ├── Functions
+│   ├── Input.php
+│   ├── Interfaces
+│   ├── Jobs
+│   ├── Kv.php
+│   ├── Logger.php
+│   ├── Mail.php
+│   ├── Model.php
+│   ├── Orm.php
+│   ├── Parse
+│   ├── Psr
+│   ├── Random.php
+│   ├── README.md
+│   ├── Resque
+│   ├── Rest.php
+│   ├── Rsa.php
+│   ├── Safe.php
+│   ├── Service
+│   ├── Session.php
+│   ├── Storage
+│   ├── Test
+│   ├── Util
+│   ├── Validate.php
+│   └── Wechat.php
+├── LICENSE
+├── public                       公共目录【前端资源目录，生产环境根目录】
+│   ├── css
+│   ├── favicon.ico
+│   ├── index.php
+│   ├── js
+│   └── robots.txt
+├── README.MD
+├── runtime                      默认缓存日志临时文件夹【保证程序具有可读写权限】  
+│   ├── kv
+│   ├── log
+│   └── phpunit
+├── server.cmd
+├── tests                        单元测试目录  
+│   ├── library
+│   ├── phpunit.xml
+│   └── test.php
+├── vendor                       第三方包
+│   ├── autoload.php
+│   ├── composer
+│   ├── psr
+│   └── symfony
+└── yaf                          控制台操作脚本
+
 ```
 >
+
+### 生成控制器
+```bash
+    # php yaf help make:controller 
+    php yaf make:controller controller name 
+
+```
+
+### 操作队列
+
+#### 驱动
+* redis (目前只支持redis驱动,后续可增加)
+#### 消息入队列
+```php
+
+<?php 
+
+//test resque
+    $argus = array(
+        'time' => time(),
+        'array' => array(
+            'test' => 'test',
+        ),
+    );
+    
+    $jobId =\Resque\Queue::push('Jobs\testJob',$argus,true);
+    echo "Queued job ".$jobId."\n\n";
+    
+    $jobId =\Resque\Queue::push('Jobs\testJob',$argus,true,'queue_name');
+    echo "Queued job ".$jobId."\n\n";
+    
+    /*
+     * 手动设置redis连接配置
+     * 需在push之前修改配置
+     */
+     \Resque\Queue::setConfig($host, $port, $password = null, $database = 0);
+     \Resque\Queue::push(...);
+    
+```
+#### 消费队列
+```bash
+    php yaf help  #可查看帮助命令
+    php yaf list  #查看命令列表
+    php yaf queue:work  #默认消费所有队列,间隔轮询默认5秒
+    php yaf help queue:work #查看参数提示 
+    
+    queue:work --queue=queue_name --interval=time --blocking=0/1 --process=num --loglevel=0/1 --pidfile=filepath
+    
+    queue       =>  队列名 默认为* 检测所有队列
+    interval    =>  间隔轮询时间
+    blocking    =>  是否堵塞  0不堵塞,1堵塞
+    process     =>  进程数    windows下恒为1
+    loglevel    =>  日志详细  默认打开
+    pidfile     =>  进程pid文本存储 默认不存储
+
+```
 
 ## 许可协议(LICENSE)
 

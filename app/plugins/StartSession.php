@@ -21,17 +21,18 @@ class StartSessionPlugin extends Yaf_Plugin_Abstract {
             default:
                 throw new Exception('未定义方式'.$config['driver']);
         }
-        if($sid = Cookie::get($config['cookie'])){
+        if($sid = Cookie::get($config['cookie']['name'])){
             $sid =Session::decryptToken($sid);
         }
         Session::start($sid,[
-            'name'=>$config['cookie'],
-            'gc_maxlifetime'=>(int)$config['lifetime'],
-            'cookie_lifetime'=>(int)$config['lifetime'],
+            'name'=>$config['cookie']['name'],
+            'gc_maxlifetime'=>(int)$config['cookie']['expire'],
+            'cookie_lifetime'=>(int)$config['cookie']['expire'],
+            'cookie_domain' => $config['cookie']['domain']
         ]);
         //XSRF-TOKEN
-        // Cookie::set("X-XSRF-TOKEN",Session::token(),"",(int)$config['lifetime']);
-        Cookie::set($config['cookie'],Session::token(),"",(int)$config['lifetime']);
+        // Cookie::set("X-XSRF-TOKEN",Session::token(),"",(int)$config['cookie']['expire']);
+       Cookie::set($config['cookie']['name'],Session::token(),"",(int)$config['cookie']['expire']);
     }
     //路由结束之后触发，此时路由一定正确完成, 否则这个事件不会触发
     public function routerShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response) {

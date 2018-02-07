@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+
+<?php
+
+define('APP_PATH', __DIR__);
+
+require_once APP_PATH . "/vendor/autoload.php";
+
+$app = new Symfony\Component\Console\Application("<info>YAF</info> Console Tool.");
+$app->add(new \App\Console\Command\MakeController());
+$app->add(new \App\Console\Command\QueueController());
+$app->run();

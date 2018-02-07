@@ -1,0 +1,14 @@
+{
+    "require": {
+        "symfony/console": "^3.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Resque\\": "library/Resque/",
+            "Util\\": "library/Util/",
+            "Jobs\\": "library/Jobs/",
+            "Psr\\": "library/Psr/"
+        }
+    }
+}

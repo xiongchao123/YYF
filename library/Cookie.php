@@ -22,15 +22,10 @@ class Cookie
      */
     private static $_config = null;
 
-   /* private function __construct()
-    {
-        self::$_config        = Config::get('cookie')->toArray();
-        self::$_config['key'] = self::key();
-    }*/
 
     public function __construct()
     {
-        self::$_config        = Config::get('cookie')->toArray();
+        self::$_config = Config::get('session')->cookie->toArray();
         self::$_config['key'] = self::key();
     }
 
@@ -86,10 +81,11 @@ class Cookie
     {
         if (isset($_COOKIE[$name])) {
             unset($_COOKIE[$name]);
-            $path   = $path ?: self::config('path');
+            /*$path   = $path ?: self::config('path');
             $domain = $domain === null ? self::config('domain') : $domain;
-            setrawcookie($name, '', 100, $path, $domain, self::config('secure'), self::config('httponly'));
+            setrawcookie($name, '', 10, $path, $domain, self::config('secure'), self::config('httponly'));*/
         }
+        setrawcookie($name, '', time()-1);
     }
 
     /**
@@ -172,8 +168,7 @@ class Cookie
     private static function config($name)
     {
         if (!$config = self::$_config) {
-            $config = Config::get('cookie')->toArray();
-
+            $config = Config::get('session')->cookie->toArray();
             $config['key'] = Config::getSecret("encrypt.key_token");
             self::$_config = $config;
         }
