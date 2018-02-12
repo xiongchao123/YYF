@@ -60,7 +60,6 @@
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="/register">
                             <?php csrf_field() ?>
-                            <input type="hidden" name="_token" value="8OhsMB3PzrjnMSKmPifKeqbwC7xKkJehcD7zikiA">
 
                             <div class="form-group<?php echo(isset($errors['name']) ? ' has-error' : ''); ?>">
                                 <label for="name" class="col-md-4 control-label">Name</label>
@@ -72,6 +71,21 @@
                                     if (isset($errors['name']))
                                     {
                                         echo '<span class="help-block"><strong>' . $errors['name'] . '</strong></span>';
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group<?php echo(isset($errors['phone']) ? ' has-error' : ''); ?>">
+                                <label for="name" class="col-md-4 control-label">Phone</label>
+
+                                <div class="col-md-6">
+                                    <input id="phone" type="text" class="form-control" name="phone" value="" required
+                                           autofocus>
+                                    <?php
+                                    if (isset($errors['phone']))
+                                    {
+                                        echo '<span class="help-block"><strong>' . $errors['phone'] . '</strong></span>';
                                     }
                                     ?>
                                 </div>

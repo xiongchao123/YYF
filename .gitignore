@@ -1,3 +1,6 @@
+#IDE
+./idea
+
 #tempFile
 #临时文件
 temp/
@@ -74,3 +77,5 @@ Temporary Items
 #php-cs-fixer
 .php_cs
 .php_cs.cache
+
+/.idea

@@ -1,5 +1,5 @@
 <?php
-/** 
+/**
  * 插件类定义
  * SessionPlugin.php
  */
@@ -10,11 +10,11 @@ class StartSessionPlugin extends Yaf_Plugin_Abstract {
         $config=Config::get("session");
         switch ($config['driver']){
             case "redis":
-                ini_set("session.save_handler","redis");
+                ini_set("session.saveHandler","redis");
                 session_save_path($config['redis']);
                 break;
             case "file" :
-                ini_set("session.save_handler","file");
+                ini_set("session.saveHandler","file");
                 session_save_path($config['files']);
                 break;
             //TODO memcache
@@ -28,11 +28,11 @@ class StartSessionPlugin extends Yaf_Plugin_Abstract {
             'name'=>$config['cookie']['name'],
             'gc_maxlifetime'=>(int)$config['cookie']['expire'],
             'cookie_lifetime'=>(int)$config['cookie']['expire'],
-            'cookie_domain' => $config['cookie']['domain']
+            'cookie_domain' => $config['cookie']['domain'] ?? ''
         ]);
         //XSRF-TOKEN
         // Cookie::set("X-XSRF-TOKEN",Session::token(),"",(int)$config['cookie']['expire']);
-       Cookie::set($config['cookie']['name'],Session::token(),"",(int)$config['cookie']['expire']);
+        Cookie::set($config['cookie']['name'],Session::token(),"",(int)$config['cookie']['expire']);
     }
     //路由结束之后触发，此时路由一定正确完成, 否则这个事件不会触发
     public function routerShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response) {

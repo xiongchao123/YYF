@@ -21,17 +21,10 @@ class IndexController extends Rest
    public function indexAction()
     {
         Yaf_Dispatcher::getInstance()->disableView();
-        $url = $this->_request->getBaseUri();
+        $url = $this->_request->getRequestUri();
         $this->getView()
-            ->assign('version', Config::get('version'))
             ->assign('url', $url);
         $this->display('index');
-    }
-
-    public function demoAction()
-    {
-        //response 即为返回内容
-       // var_dump(Session::start());
     }
 
     /**
@@ -42,6 +35,10 @@ class IndexController extends Rest
      */
     public function GET_testAction()
     {
+        $this->response(1, array(
+            'name' => '123',
+            'age' => 14
+        ));
         if (Input::get('data', $data)) {//get参数中含data
             //success快速返回成功信息
             $this->success($data);

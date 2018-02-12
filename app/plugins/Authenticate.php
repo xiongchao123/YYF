@@ -12,9 +12,11 @@ class AuthenticatePlugin extends Yaf_Plugin_Abstract
         }
         //请求的/module/controller/action
         $uri = $request->getRequestUri();
+
         if (!in_array($uri, $filters)) {
             //判断当前用户是否认证
             $config = Config::get('session');
+
             if ($sid = Cookie::get($config['cookie']['name'])) {
                 if(isset($_SESSION['uid'])){
                     $uid=\Util\Hashids::getInstance()->decode($_SESSION['uid']);

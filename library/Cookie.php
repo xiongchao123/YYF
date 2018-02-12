@@ -40,6 +40,7 @@ class Cookie
      */
     public static function set($name, $value, $path = '', $expire = null, $domain = null)
     {
+
         if ($value = self::encode($value)) {
             $path = $path ?: self::config('path');
 
@@ -50,7 +51,7 @@ class Cookie
             if ($domain === null) {
                 $domain = self::config('domain');
             }
-            return setrawcookie($name, $value, $expire, $path, $domain, self::config('secure'), self::config('httponly'));
+            return setcookie($name, $value, $expire, $path, $domain, self::config('secure'), self::config('httponly'));
         }
     }
 

@@ -1,0 +1,150 @@
+html,body,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}
+*{box-sizing:border-box}
+audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
+audio:not([controls]){display:none;height:0}
+a{background-color:transparent;text-decoration:none}
+a:active,a:hover{outline:0;text-decoration:none !important;}
+ul,li{list-style:none;}
+input{background:transparent;border:0}
+button,input,select,textarea{outline:none}
+button,select,textarea{border:none;cursor:pointer}
+button,input,select,textarea,input{border-radius:5px}
+body{font-family:arial,"Microsoft YaHei"}
+body::-webkit-scrollbar{width:0}
+.clearfix:after{display:block;content:"$";height:0;clear:both;overflow:hidden;visibility:hidden}
+.l{float:left}
+.r{float:right}
+.fixed-head{width:100%;position:fixed;left:0;top:0;z-index:1000;-webkit-transition:all 200ms;transition:all 200ms}
+.fixed-head.hide{top:-30px}
+.com-head{height:30px;line-height:30px;background:#005c9c}
+.com-head>section{height:100%;width:1200px;margin:0 auto}
+.com-head>section a{height:100%;display:inline-block}
+.com-head>section .l a{width:76px;background:url(../img/head-logo.png) no-repeat center center}
+.com-head>section .r{font-size:0;height:100%}
+.com-head>section .r a{font-size:14px;color:#bcd4e5;padding:0 10px}
+.com-head>section .r a:last-of-type{padding:0 0 0 10px}
+.com-nav{height:60px;background:#0075c3;border-bottom:1px solid #e6e6e6}
+.com-nav .main{height:100%;width:1400px;margin:0 auto}
+.com-nav .main .logo{float:left;width:167px;height:100%;background:url(../img/dcloud-logo.png) no-repeat center center}
+.com-nav .main .nav{float:left;width:1100px;height:100%;font-size:0;text-align:center}
+.com-nav .main .nav>a{display:inline-block;color:#cbdeeb;font-size:16px;line-height:60px;position:relative;text-align:center;padding:0 8px;margin:0 25px}
+.com-nav .main .nav>a:after{width:0;height:4px;background:#fff;content:'';position:absolute;bottom:0;left:50%;-webkit-transition:all 200ms linear;transition:all 200ms linear}
+.com-nav .main .nav>a.active{color:#fff}
+.com-nav .main .nav>a.active:after{width:100%;left:0}
+.com-nav .main .nav>a:hover{color:#fff}
+.com-nav .main .nav>a:hover:after{width:100%;left:0}
+.com-nav .main .login{width:100px;height:100%;float:right;text-align:right;font-size:0;padding-top:20px}
+.com-nav .main .login a{display:inline-block;height:18px;line-height:18px;font-size:16px;color:#cbdeeb;padding:0 10px;border-right:1px solid #d7e4ee}
+.com-nav .main .login a:last-of-type{padding:0 0 0 10px;border-right:0}
+.com-nav .main .avator{height:100%;float:left;width:50px;text-align:center;padding-top:14px}
+.com-nav .main .avator img{width:32px;height:32px}
+.com-main{width:1400px;margin:120px auto 0}
+.com-main .left-slide{float:left;width:200px}
+.com-main .left-slide li{padding:10px 0;border-bottom:1px solid #e8e8e8}
+.com-main .left-slide li:last-of-type{border-bottom:0}
+.com-main .left-slide li .type{height:40px;line-height:40px;font-size:16px;color:#666}
+.com-main .left-slide li .link a{display:block;height:40px;line-height:40px;font-size:14px;color:#000;padding-left:40px}
+.com-main .left-slide li .link a.active{background:#2e88db;color:#fff}
+.com-main .right-content{float:left;width:1160px;margin-left:40px}
+.icon{display:inline-block;vertical-align:middle;width:28px;height:20px;background-image:url(../img/type.png);background-repeat:no-repeat}
+.icon-jsfw{background-position:2px 0}
+.icon-jxfw{background-position:2px -30px}
+.icon-ywgj{background-position:2px -56px}
+.icon-wdfw{background-position:2px -80px}
+.gray-bg{background:#f9f9f9}
+.img-bg{width:100%;height:100%;background:url(../img/bg.jpg) no-repeat center 60px}
+.fr{float:right}
+a{color:#2792e4}
+.get{position:absolute;right:15px;top:12px;background:#dbdbdb;width:82px;height:20px;line-height:20px;text-align:center;color:#fff;font-size:14px}
+.get.blue{background:#2792e4}
+input{font-size:16px;color:#bdbdbd;border:1px solid #e2e2e2;padding:0 15px;outline:none}
+.loading{display:inline-block;background:#2792e4;width:400px;height:44px;line-height:44px;font-size:18px;color:#fff;text-align:center}
+.load-head{width:100%;height:400px;background:url(../img/banner.jpg) no-repeat center center}
+.load{width:400px;margin:40px auto 55px}
+.load li{position:relative;padding-bottom:20px}
+.load li.pad-big{padding-bottom:26px}
+.load li.last a{font-size:14px}
+.load li input{width:400px;height:44px;line-height:44px;font-size:16px}
+.load li input.user-name{background:url(../img/user.png) no-repeat 365px center}
+.load li input.pw{background:url(../img/pw.png) no-repeat 365px center}
+.load-foot{position:fixed;left:0;bottom:0;width:100%;height:54px;line-height:54px;background:#f9f9f9;color:#555;font-size:14px;text-align:center}
+.register-head{background:#fff;height:60px;line-height:60px}
+.register-head .main{width:1200px;color:#555;font-size:16px;margin:0 auto}
+.register-head .main i{display:inline-block;width:32px;height:24px;background:url(../img/regist.png) no-repeat center center;margin-right:10px}
+.register-head .main .font-big{color:#000;font-size:18px}
+.register-head .main span{margin-right:10px}
+.register-head .main i,.register-head .main span{vertical-align:middle}
+.register-contain{width:1200px;margin:100px auto 0;background:#fff;padding:100px 0 90px}
+.register-contain.retrieval .main{width:400px}
+.register-contain.retrieval .main input{width:400px;margin-left:0}
+.register-contain.retrieval .main input.small{margin-left:0}
+.register-contain.retrieval .main .loading{width:400px;margin-left:0}
+.register-contain .main{width:437px;margin:0 auto;font-size:16px}
+.register-contain .main span{color:#000}
+.register-contain .main span.red{color:#fc3535;margin-left:20px}
+.register-contain .main div{margin-bottom:30px;height:50px;position:relative}
+.register-contain .main span,.register-contain .main input{vertical-align:middle}
+.register-contain .main .loading,.register-contain .main input{width:360px;height:50px;line-height:50px}
+.register-contain .main input{margin-left:8px}
+.register-contain .main input.small{width:120px;height:40px;line-height:40px;text-align:center;margin-left:78px}
+.register-contain .main .get{top:15px}
+.register-contain .main .loading{margin-left:78px}
+.register-contain h3{color:#0074e1;font-size:20px;font-weight:normal;text-align:center;border-bottom:1px solid #dbdbdb;padding-bottom:15px;margin-bottom:50px}
+.register-contain h3 i{position:relative;top:2px;display:inline-block;width:28px;height:17px;background:url(../img/mail.png) no-repeat center center;margin-left:10px}
+.register-foot{text-align:center;color:#555;font-size:14px;padding-top:80px}
+.register-foot.retrieval-foot{padding-top:170px}
+.right-head{background:#f2f7fa;height:38px;line-height:38px;padding:0 10px;font-size:16px;color:#000}
+.right-head.pad{padding:0 20px}
+.right-head i{position:relative;top:4px;display:inline-block;margin-right:12px}
+.right-head i.cj{width:20px;height:19px;background:url(../img/cj.png)}
+.right-head i.dk{width:20px;height:17px;background:url(../img/dk.png)}
+.right-head .write{display:inline-block;color:#158fe0;font-size:14px}
+.right-head .write span{position:relative;top:3px;display:inline-block;width:18px;height:18px;background:url(../img/write.png);margin-right:10px}
+.right-main{color:#555;font-size:14px;padding:40px 0 50px 42px}
+.right-main .ml{margin-left:146px}
+.right-main span,.right-main input,.right-main select{vertical-align:middle}
+.right-main select,.right-main input{width:310px;height:30px;line-height:30px;background:#fafafa}
+.right-main select{border:1px solid #e2e2e2;padding:0 15px;appearance:none;-moz-appearance:none;-webkit-appearance:none;background:#fafafa url(../img/arrow.png) no-repeat right center}
+.add{background:#badeff;border-radius:5px;width:160px;height:34px;line-height:36px;text-align:center;color:#000;margin-left:42px}
+.add i{position:relative;top:2px;display:inline-block;width:14px;height:14px;background:url(../img/add.png);margin-right:10px}
+.serve{padding:50px 0 0 42px;color:#555;font-size:14px}
+.serve p{color:#000;padding-bottom:40px}
+.serve div{padding-bottom:60px}
+.serve label{margin-right:68px;cursor:pointer}
+.serve label i{position:relative;top:4px;display:inline-block;width:20px;height:20px;margin-right:10px}
+.serve label i.select-no{background:url(../img/select-no.png)}
+.serve label i.select{background:url(../img/select.png)}
+.serve textarea{width:100%;height:200px;line-height:20px;background:#fafafa;border:1px solid #e2e2e2;padding:15px}
+.serve .sure{text-align:center;padding-top:45px}
+.serve .sure button{width:120px;height:32px;line-height:32px;color:#fff;text-align:center;background:#2e88db}
+.serve .sure button.qx{background:#cfcfcf;margin-left:75px}
+.my-box{padding:40px 30px 50px;color:#555;font-size:14px}
+.my-box p{line-height:36px}
+.my-box .user-info{display:inline-block;width:245px;position:relative}
+.my-box .user-info.rz{width:100%}
+.my-box .user-info img{position:absolute;top:-4px;left:0;width:76px;height:76px;border-radius:50% 50%}
+.my-box .user-info img.warn{top:16px;left:0;width:42px;height:42px}
+.my-box .user-info p{color:#000;margin-left:95px}
+.my-box .user-info p.one{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.my-box .user-info p.ml{margin-left:65px}
+.my-box .user-info p.big{font-size:16px}
+.my-box .user-info,.my-box ul{vertical-align:middle}
+.my-box ul{display:inline-block}
+.my-box ul li{display:inline-block;width:260px;vertical-align:top}
+.my-box ul li:first-of-type{width:170px}
+.my-box ul li:last-of-type{width:210px}
+.my-box ul li span{margin-left:55px}
+.my-box ul li span.no{margin-left:0}
+.my-box .real{padding:40px 140px 0 90px}
+.my-box .real a i{display:inline-block;width:60px;height:60px}
+.my-box .real a i.yx{background:url(../img/yx.png)}
+.my-box .real a i.manage{background:url(../img/manage.png)}
+.my-box .real a i.quest{width:18px;height:18px;background:url(../img/ques.png)}
+.my-box .real a i,.my-box .real a span{vertical-align:middle}
+.my-box .real a span{margin:0 20px;font-size:18px;color:#158fe0}
+.my-box dl dd{color:#000;padding-bottom:15px}
+.my-box dl dd .green{display:inline-block;background:#5fb333;height:10px;margin-right:20px}
+.my-box dl dd a{float:right;color:#158fe0}
+
+/*# sourceMappingURL=style.css.map */
