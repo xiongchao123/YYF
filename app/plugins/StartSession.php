@@ -28,7 +28,7 @@ class StartSessionPlugin extends Yaf_Plugin_Abstract {
             'name'=>$config['cookie']['name'],
             'gc_maxlifetime'=>(int)$config['cookie']['expire'],
             'cookie_lifetime'=>(int)$config['cookie']['expire'],
-            'cookie_domain' => $config['cookie']['domain'] ?? ''
+            'cookie_domain' => $config['cookie']['domain'] ?? ""
         ]);
         //XSRF-TOKEN
         // Cookie::set("X-XSRF-TOKEN",Session::token(),"",(int)$config['cookie']['expire']);

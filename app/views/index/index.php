@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>YYF-YUNYIN YAF FRAMEWORK</title>
+        <title>YYF</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="<?php echo csrf_token(); ?>">
         <link rel="stylesheet" href="/css/style.css">
@@ -160,7 +160,7 @@
                                 <i class="el-icon-caret-bottom el-icon--right"></i>
                             </span>
                                             <el-dropdown-menu slot="dropdown">
-                                                <el-dropdown-item @click.native="addPort(scope.row)">增加端口</el-dropdown-item>
+<!--                                                <el-dropdown-item @click.native="addPort(scope.row)">增加端口</el-dropdown-item>-->
                                                 <el-dropdown-item @click.native="handleDelete(scope.$index, scope.row)">删除</el-dropdown-item>
                                             </el-dropdown-menu>
                                         </el-dropdown>
@@ -330,15 +330,12 @@
                         this.operateContainer(row.container_id, 'restart')
                     },
                     handleStart(index, row) {
-                        console.log(index, row.id);
                         this.operateContainer(row.container_id, 'start')
                     },
                     handleStop(index, row) {
-                        console.log(index, row);
                         this.operateContainer(row.container_id, 'stop')
                     },
                     handleDelete(index, row) {
-                        console.log(index, row);
                         let _this = this;
                         _this.currentId = row.container_id;
                         _this.$confirm('此操作将永久删除该容器, 是否继续?', '提示', {
@@ -356,10 +353,10 @@
                         let _this = this;
                         let _duration = 1000;
                         _this.loading = true;
-                        axios.post('/container/operate', {
+                        axios.get('/container/operate', {params: {
                             id: id,
                             type: type
-                        }).then(function (response) {
+                        }}).then(function (response) {
                             let res = response.data;
                             if(res.status === 0) {
                                 _this.$message({
@@ -398,11 +395,11 @@
                         let _this = this;
                         _this.dialogFormVisible = false;
                         _this.loading = true;
-                        axios.post('/validate/password', {
+                        axios.get('/validate/password', {params:{
                             'password': _this.password
-                        }).then(function (response) {
+                        }}).then(function (response) {
                             let res = response.data;
-                            if(res) {
+                            if(res.status === 0) {
                                 _this.operateContainer(_this.currentId, 'delete');
                             }else {
                                 _this.$message.error('密码错误');
@@ -414,7 +411,6 @@
                         });
                     },
                     openTerminal(index, row) {
-                        console.log(row);
                         if(row.terminalPort) {
                             let url = 'http://' + row.hosts + ':' + row.terminalPort;
 //                    this.terminalSrc = url;
@@ -425,6 +421,9 @@
                 },
 
                 mounted() {
+                    if(window.location.pathname === '/mine') {
+                        this.pagination.type = 'mine';
+                    }
                     this.getMenus();
                     this.getContainers();
                 }

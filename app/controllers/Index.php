@@ -28,6 +28,17 @@ class IndexController extends Rest
     }
 
     /**
+     *
+     */
+    public function mineAction()
+    {
+        Yaf_Dispatcher::getInstance()->disableView();
+        $url = $this->_request->getRequestUri();
+        $this->getView()->assign('url', $url);
+        $this->display('index');
+    }
+
+    /**
      * GET /Index/test?data=''
      * GET请求测试
      *
@@ -83,4 +94,5 @@ class IndexController extends Rest
             'params' => $_REQUEST,
         );
     }
+
 }

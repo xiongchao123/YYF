@@ -89,4 +89,27 @@ class UsersController extends Rest
             ));
         }
     }
+
+
+    public function GET_validatePasswordAction()
+    {
+        Input::get('password', $password);
+
+        $user_id = \Util\Hashids::getInstance()->decode($_SESSION['uid'])[0];
+
+        $user = UsersModel::find($user_id);
+
+        if($user && password_verify($password,$user->password)){
+            echo json_encode(array(
+                'status' => 0,
+                'message' => '密码正确'
+            ));
+        }else {
+            echo json_encode(array(
+                'status' => 1,
+                'message' => '密码错误'
+            ));
+        }
+
+    }
 }

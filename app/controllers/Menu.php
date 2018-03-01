@@ -66,4 +66,11 @@ class MenuController extends Rest
         echo json_encode($res);
     }
 
+    public function GET_parentAction()
+    {
+        $parent = MenusModel::where('parent_id', 0)->select('*');
+
+        echo json_encode($parent);
+    }
+
 }
